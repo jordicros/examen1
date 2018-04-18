@@ -1,0 +1,7 @@
+Necessitem una taula d'Alumnes, una taula d'Instituts i una relació entre elles de ManyToOne (un alumne pertany a un institut i un institut té molts alumnes).
+
+Podem afegir també una taula d'Operacions.
+
+Entre la taula Alumnes-Operacions hi ha una relació ManyToOne(un alumne té moltes operacions però una operació tan sols pertany a un alumne).
+
+Ambdues relacions s'han dissenyat de manera Unidireccional (accés a traves de Alumnes), encara que també es pugui fer bidireccional.(Decisió arbitrària)
