@@ -67,7 +67,13 @@ public class ServeiREST {
     @Path("/operacions/generate")
     @Produces(MediaType.APPLICATION_JSON)
     public Operacio resultOP(){
-        return manager.processarOperacio();
+        Operacio temp = manager.processarOperacio();
+        if(temp == null)
+        {
+            temp = new Operacio();
+            temp.idSolicitant = -1;
+        }
+        return temp;
     }
 
 }

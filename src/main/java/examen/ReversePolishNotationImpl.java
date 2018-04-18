@@ -8,20 +8,26 @@ import java.util.Stack;
 public class ReversePolishNotationImpl implements ReversePolishNotation{
     public Operacio processarOperacio(Operacio op){
             Stack<Double> pila = new Stack<Double>();
-
+            int counter=0;
+            double resposta = 0;
             for (int i = 0; i < op.expressio.length; i++) {
                 if (op.expressio[i].matches("-?[\\d]+")) {
                     pila.push(Double.parseDouble(op.expressio[i]));
+                    counter++;
                 } else {
-                    double op2 = pila.pop();
-                    double op1 = pila.pop();
-                    double result = 0;
                     String operator = op.expressio[i];
-                    if (operator.equals("+")) result = op1 + op2;
-                    else if (operator.equals("-")) result = op1 - op2;
-                    else if (operator.equals("*")) result = op1 * op2;
-                    else if (operator.equals("/")) result = op1 / op2;
-                    pila.push(result);
+                    double result = pila.pop();
+                    for (int j = 0; j < counter - 1; j++) {
+                        double op2 = pila.pop();
+                        if (operator.equals("+")) result = result + op2;
+                        else if (operator.equals("-")) result = result - op2;
+                        else if (operator.equals("*")) result = result * op2;
+                        else if (operator.equals("/")) result = result / op2;
+
+                    }
+                    resposta = resposta + result;
+                    counter=0;
+                    pila.push(resposta);
                 }
             }
             op.resultat = pila.pop();

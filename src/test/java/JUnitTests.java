@@ -18,14 +18,22 @@ public class JUnitTests {
     @Test
     public void provaCalcul(){
         ReversePolishNotationImpl calc = new ReversePolishNotationImpl();
-        String[] expressio = new String[3];
-        expressio[0] = "2";
-        expressio[1] = "2";
-        expressio[2] = "-";
+        String[] expressio = new String[7];
+        String[] ex2 = new String[3];
+        expressio[0] = "2"; ex2[0]= "5";
+        expressio[1] = "2"; ex2[1]= "3";
+        expressio[2] = "6"; ex2[2] = "-";
+        expressio[3] = "*";
+        expressio[4] = "2";
+        expressio[5] = "6";
+        expressio[6] = "-";
         Operacio op = new Operacio(5,expressio);
-        Operacio resultat = calc.processarOperacio(op);
-        assertEquals(0, (int)resultat.resultat); //Faig el cast perquè està obsolet amb DOUBLE
-        //OBSOLET????
+        Operacio op2 = new Operacio(6,ex2);
+        op = calc.processarOperacio(op);
+        op2 = calc.processarOperacio(op2);
+        assertEquals(28, (int)op.resultat); //Faig el cast perquè està obsolet amb DOUBLE
+        assertEquals(-2, (int)op2.resultat); //Faig el cast perquè està obsolet amb DOUBLE
+
     }
     @Test
     public void setUp(){

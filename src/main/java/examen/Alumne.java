@@ -11,7 +11,7 @@ import java.util.List;
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
     public class Alumne {
         int id;
-        String institut;
+        public String institut;
         List<Operacio> opFetes= new ArrayList<Operacio>();
         public int getIdUser(){return this.id;}
         public List<Operacio> getopFetes(){return this.opFetes;}

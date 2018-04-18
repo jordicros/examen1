@@ -10,6 +10,7 @@ public class Operacio {
     public double resultat;
     public String[] expressio;
     public int idSolicitant;
+    public String institut;
     public Operacio(int id, String[] str){
         this.idSolicitant = id;
         this.resultat=0;

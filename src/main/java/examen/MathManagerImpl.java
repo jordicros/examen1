@@ -51,11 +51,15 @@ public class MathManagerImpl implements MathManager {
         log.info("Inici del recorregut");
         while(i<this.alumnes.size())
         {
-            if(this.alumnes.get(i).institut == ins)
-                for(int j=0;i<this.alumnes.get(i).opFetes.size();j++)
-                {
-                llista.add(this.alumnes.get(i).opFetes.get(j));}
-            else
+            //COMPORTAMENT EXTRANY
+            Alumne a = this.alumnes.get(i);
+            if(a.institut.equals(ins))
+                for(int j=0;i<a.opFetes.size();j++)
+                {log.info("S'ha trobat un alumne de: "+a.institut);
+                Operacio o = a.opFetes.get(j);
+                log.info("Hi");
+                llista.add(o);}
+                log.info("Hi");
                 i++;
         }
         log.info("Retornant operacions fetes des d'un institut");
@@ -94,6 +98,7 @@ public class MathManagerImpl implements MathManager {
     }
     public void realitzarOperacio(Operacio op, Alumne p){
         int i=0,trobat=0;
+
         while(i<instituts.size()&&trobat==0){
             if(instituts.get(i).nom==p.institut)
                 trobat=1;
@@ -115,6 +120,10 @@ public class MathManagerImpl implements MathManager {
     }
     public Operacio processarOperacio(){
         ReversePolishNotationImpl calculadora = new ReversePolishNotationImpl();
+        if(this.operationQueue.size() ==0)
+            return null;
+        else
+        {
         Operacio result = this.getOperationQueue().poll();
         result = calculadora.processarOperacio(result);
         int i=0;
@@ -134,7 +143,7 @@ public class MathManagerImpl implements MathManager {
             log.warning("Alumne no trobat");
 
 
-        return result; //PER CANVIAR
+        return result;}
     }
 
 
